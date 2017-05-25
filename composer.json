@@ -1,0 +1,21 @@
+{
+    "name": "insolita/yii2-extensionci",
+    "description": "Advanced Gii extension generator with travis-ci and test skeleton",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","gii","test","codeception","travis"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "insolita"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2-gii": "2.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "insolita\\extensionci\\": "src/"
+        }
+    }
+}
