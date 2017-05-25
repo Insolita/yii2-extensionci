@@ -8,7 +8,7 @@ Installation
 add
 
 ```
-"insolita/extensionci": "~0.0.1"
+"insolita/yii2-extensionci": "~0.0.1"
 ```
 
 to the require-dev section of your `composer.json` file.
