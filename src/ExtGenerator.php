@@ -8,6 +8,7 @@ namespace insolita\extensionci;
 use yii\gii\CodeFile;
 use yii\gii\generators\extension\Generator;
 use yii\helpers\ArrayHelper;
+use yii\helpers\StringHelper;
 
 class ExtGenerator extends Generator
 {
@@ -22,7 +23,7 @@ class ExtGenerator extends Generator
     ];
     public $commonFiles = [
         'CHANGELOG.md',
-        '.gitattributes',
+        '_.gitattributes',
         '.gitignore',
         'codeception.yml',
         '.travis.yml',
@@ -83,8 +84,9 @@ class ExtGenerator extends Generator
             );
         }
         foreach ($this->commonFiles as $path){
+            $targetPath = StringHelper::startsWith($path, '_')?ltrim($path,'_'):$path;
             $files[] = new CodeFile(
-                $modulePath . '/' . $this->packageName . '/'.$path,
+                $modulePath . '/' . $this->packageName . '/'.$targetPath,
                 file_get_contents($this->templatePath.'/'.$path)
             );
         }
