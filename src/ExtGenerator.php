@@ -36,7 +36,9 @@ class ExtGenerator extends Generator
         'tests/.env',
         'tests/unit.suite.yml',
         'tests/yii',
-        'tests/bootstrap.php'
+        'tests/bootstrap.php',
+        'tests/config/base.php',
+        'tests/config/console.php',
     ];
     public $functionalFiles = [
         'tests/config/functional.php',
