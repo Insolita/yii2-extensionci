@@ -7,9 +7,16 @@ matrix:
   fast_finish: true
 
 services:
-  #- postgresql
+  #- postgresql: "9.5"
   - mysql
   - redis-server
+
+#Uncomment this if you need postgres with json support
+#addons:
+#   postgresql: "9.5"
+#   apt:
+#     packages:
+#       - postgresql-server-dev-9.5
 
 # cache vendor dirs
 cache:
@@ -21,7 +28,6 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  # disable xdebug for performance in composer
   - phpenv config-rm xdebug.ini || echo "xdebug is not installed"
   - travis_retry composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
