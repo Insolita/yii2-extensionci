@@ -1,8 +1,13 @@
 Advanced Gii extension generator
-======================
+================================
+![Latest Stable Version](https://img.shields.io/packagist/v/insolita/yii2-extensionci.svg)
+[![Total Downloads](https://img.shields.io/packagist/dt/insolita/yii2-extensionci.svg)](https://packagist.org/packages/insolita/yii2-extensionci.svg)
+![License](https://img.shields.io/packagist/l/insolita/yii2-extensionci.svg)
+
 provide extension with test skeleton adapted for travis-ci
 default template - with codeception unit only
 functional template also include functional suite and travis configuration
+
 Installation
 ------------
 add
