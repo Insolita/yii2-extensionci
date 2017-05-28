@@ -14,6 +14,7 @@ class ExtGenerator extends Generator
 {
     public $templates = [
         'default'=>'@insolita/extensionci/templates/default',
+        'nodb'=>'@insolita/extensionci/templates/nodb',
         'functional'=>'@insolita/extensionci/templates/functional',
     ];
     public $requiredFiles = [
@@ -29,8 +30,6 @@ class ExtGenerator extends Generator
         '.travis.yml',
         '.scrutinizer.yml',
         'docs/.gitkeep',
-        'tests/migrations/mysql/.gitkeep',
-        'tests/migrations/pg/.gitkeep',
         'tests/unit/bootstrap.php',
         'tests/unit/AwesomeTest.php',
         'tests/.env',
@@ -40,6 +39,12 @@ class ExtGenerator extends Generator
         'tests/config/base.php',
         'tests/config/console.php',
     ];
+    
+    public $dbDepFiles = [
+        'tests/migrations/mysql/.gitkeep',
+        'tests/migrations/pg/.gitkeep',
+    ];
+    
     public $functionalFiles = [
         'tests/config/functional.php',
         'tests/functional/bootstrap.php',
@@ -91,6 +96,14 @@ class ExtGenerator extends Generator
                 $modulePath . '/' . $this->packageName . '/'.$targetPath,
                 file_get_contents($this->templatePath.'/'.$path)
             );
+        }
+        if($this->template !== 'nodb'){
+            foreach ($this->dbDepFiles as $path){
+                $files[] = new CodeFile(
+                    $modulePath . '/' . $this->packageName . '/'.$path,
+                    file_get_contents($this->templatePath.'/'.$path)
+                );
+            }
         }
         if($this->template ==='functional'){
             foreach ($this->functionalFiles as $path){
